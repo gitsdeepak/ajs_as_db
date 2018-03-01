@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shortcuts</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <style>
+        .list {
+            width:100%;
+            float: left;
+
+            list-style-type: none;
+            font-weight: bold;
+        }
+        .list a{
+            color:blue;
+
+
+            text-decoration:none;
+        }
+            .list a:visited {
+                color: blue;
+            }
+            .list div {
+                width:100%;
+                float:left;
+                border-bottom:solid 1px #777777;
+            }
+            .list img {
+                float: left;
+                width: 30%;
+            }
+        @media (max-width:500px) {
+            .list img {
+                float: left;
+                width:140px ;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+<div class="list" style="">
+<div ng-repeat="x in Name"><a href="{{URL[$index]}}">
+    <center><h1>{{x}}</h1></center>
+    <img src="{{logo[$index]}}" />
+</a>
+    <p> The YouTube logo always needs safe space that is free of imagery and text surrounding it. Use half the icon's width to determine the minimum amount of safe space that should surround the logo. If copy appears below the logo, you should measure safe space from the bottom of the logo to the x-height of the text </p>
+       </div>
+</div>
+
+</div>
+
+<script src="database.js"></script>
+
+</body>
+</html>
