@@ -61,8 +61,8 @@
             }
             [id^="hide"] {
                 margin-top: 15px;
-                position: absolute;
-                border: blue 2px solid;
+                
+                border: blue 0px solid;
                 background: white;
                 border-radius: 15px;
                 color: blue;
