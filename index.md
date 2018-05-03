@@ -6,33 +6,95 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        var sld=0;
+        var sld = 0;
+        
         $(document).ready(function () {
+            var ex = 0;
+            function pop(x) {
+                $(".pop").css("height", x+"px");
+            }
             $("#head1").click(function () {
-                
+                ex = 1;
                 $("#hide1").slideDown();
-                
+                setTimeout(function () { pop("153") }, 250);
             });
             $("#head2").click(function () {
-              
+                ex = 2;
                 $("#hide2").slideDown();
-                
+                setTimeout(function () { pop("153") }, 250);
             });
-            $("#head1").mouseout(function () {
-                $("#hide1").slideUp();
+            $("#head2").mouseover(function () {
+
+                if (ex == 0) {
+                }else if(ex==2){}
+                else {
+                    pop("75");
+                    $("#hide" + ex).slideUp();
+                    ex = 0;
+                }
+
             });
-            $("#head2").mouseout(function () {
-                $("#hide2").slideUp();
+            $("#head1").mouseover(function () {
+
+                if (ex == 0) {
+                } else if (ex == 1) { }
+                else {
+                    pop("75");
+                    $("#hide" + ex).slideUp();
+                    ex = 0;
+                }
+
             });
+
+           $(".list").mouseover(function () {
+
+               if (ex == 0) {   
+               }
+               else {
+                   pop("75");
+                   $("#hide" + ex).slideUp();
+                   ex = 0;
+                   
+               }
+
+            });
+           $("#heading").mouseover(function () {
+
+               if (ex == 0) {
+               }
+               else {
+                   pop("75");
+                   $("#hide" + ex).slideUp();
+                   ex = 0;
+               }
+
+           });
+           $(".pop").mouseover(function () {
+
+               if (ex == 0) {
+               }
+               else {
+                   pop("75");
+                   $("#hide" + ex).slideUp();
+                   ex = 0;
+               }
+
+           });
+           
         });
     </script>
     <style>
         #main{
-            
+           padding-left:0px;
             list-style-type:none;
+            width:235px;
             overflow:hidden;
         }
+       #head1,#hide1:hover{
+           display:block
+       }
         
+       #par{}
             #main>li {
                 float:left;
                 display: block;
@@ -42,7 +104,7 @@
                 padding: 11px;
                 text-decoration: none;
             }
-        @media (min-width:1100px) {
+      
             #main > li:hover {
                 background: white;
                 border: blue 2px solid;
@@ -50,19 +112,14 @@
                 padding: 8px;
                 border-radius: 15px;
             }
-        }
-            @media (max-width:1100px) {
-                #main > li:hover {
-                    border-bottom: cyan 2px solid;
-                    color: cyan;
-                    padding: 9px;
-                    border-radius: 15px;
-                }
-            }
-            [id^="hide"] {
-                margin-top: 15px;
-                
-                border: blue 0px solid;
+        
+
+           #hide1:hover{
+               display:block;
+           }
+           
+            
+            [id^="hide"] {     
                 background: white;
                 border-radius: 15px;
                 color: blue;
@@ -74,43 +131,76 @@
                 padding-top: 10px;
                 padding-bottom: 10px;
             }
+            
                 [id^="hide"] li {
                     padding: 5px;
-                    border-bottom: solid #808080 1px
-                
-                    }
+                    border-bottom: solid #808080 1px; border-radius:12px;
+                }
+                [id^="hide"] li:hover {
+                    background:blue;
+                    color:white;
+                    
+                }
+
             .list {
                 width: 100%;
                 float: left;
                 list-style-type: none;
                 font-weight: bold;
             }
+
                 .list a {
                     color: blue;
                     text-decoration: none;
                 }
+
                     .list a:visited {
                         color: blue;
                     }
+
                 .list div {
                     width: 100%;
                     float: left;
                     border-bottom: solid 1px #777777;
                 }
+
                 .list img {
                     float: left;
                     width: 30%;
                 }
+
             @media (max-width:500px) {
                 .list img {
                     float: left;
                     width: 140px;
                 }
             }
-            #head {
+            #par{float:left;}
+            .pop{width:5%;float:left;height:75px;}
+            #head { 
+                overflow:hidden;
                 background: linear-gradient(#0000ff,#5555ff);
                 color: #eeeeee;
             }
+            #inputt{
+                margin-left:5%;
+                width:90%;
+                border-radius: 8px;
+                background:#0000DD;
+                color:white;
+                font-size:2.7vw;
+                text-align: center;
+                border:none;
+                padding-bottom:5px; 
+                padding-top:5px; 
+            }
+            #inputt:focus{
+                outline:none;
+            }
+            #inputt::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 0.5; /* Firefox */
+}
     </style>
    <!--<link rel="stylesheet" type="text/css" href="decoration.css">--> 
 </head>
@@ -118,30 +208,42 @@
 
     <div ng-app="myApp" ng-controller="myCtrl">
         <div id="head">
-            <div style="height:17px"></div>
-            <font style="padding-left:30px; font-weight:bold; font-size:7vw">This is a shortcut </font>
-            <div style="height:17px"></div>
-            <div>
+            <div id="heading">
+                <div style="height:17px"></div>
+                <input id="inputt" type="text" ng-model="test" placeholder="write your shortcut here.">
+                <div style="height:17px"></div>
+            </div>
+            <div class="pop"></div>
+            <div id="par">
                 <ul id="main">
                     <li id="head1">
-                        <font size="4"><b>Order By</b></font>
-                        <ul id="hide1">
-                            <li>date</li>
-                            <li>text</li>
-                        </ul>
+                        <div id="sh1">
+                            <font size="4"><b>Order By</b></font>
+                            <ul id="hide1">
+                                <li>date</li>
+                                <li>text</li>
+                            </ul>
+                        </div>
                     </li>
+					
                     <li id="head2">
-                        <font size=4"><b>Theme</b></font>
-                        <ul id="hide2">
-                            <li>dark</li>
-                            <li>light</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                        <div id="sh2">
+                            <font size="4"><b>Theme</b></font>
+                            <ul id="hide2">
+                                <li>dark</li>
+                                <li>light</li>
+                            </ul>
+                        </div>
+            </li>
+            </ul>
+                
         </div>
+            <div class="pop"></div>
+        </div>
+<p></p>
+
         <div class="list" style="">
-            <div ng-repeat="x in whole|orderBy:'Name'">
+            <div ng-repeat="x in whole| filter:'Do you want to visit '+test">
                 <a href="{{x.URL}}">
                     <center><h1>{{x.Name}}</h1></center>
                     <img src="{{x.logo}}" />
@@ -149,7 +251,10 @@
                 <p> The YouTube logo always needs safe space that is free of imagery and text surrounding it. Use half the icon's width to determine the minimum amount of safe space that should surround the logo. If copy appears below the logo, you should measure safe space from the bottom of the logo to the x-height of the text </p>
             </div>
         </div>
+
     </div>
+
     <script src="databaseX.js"></script>
+
 </body>
 </html>
