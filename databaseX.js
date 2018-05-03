@@ -1,7 +1,7 @@
 var app = angular.module("myApp", []);
 app.controller("myCtrl", function($scope) {
     $scope.whole=[
-        {Name:"Do you want to visit Goole?",
+        {Name:"Do you want to visit Google?",
          URL:"https://www.google.co.in/",
         logo: "https://cdn.vox-cdn.com/thumbor/Pkmq1nm3skO0-j693JTMd7RL0Zk=/0x0:2012x1341/1200x800/filters:focal(0x0:2012x1341)/cdn.vox-cdn.com/uploads/chorus_image/image/47070706/google2.0.0.jpg"
         },
