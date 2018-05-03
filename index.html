@@ -113,10 +113,7 @@
                 border-radius: 15px;
             }
         
-         #main li:hover
-        {
-            cursor: pointer;
-        }
+
            #hide1:hover{
                display:block;
            }
@@ -185,6 +182,24 @@
                 background: linear-gradient(#0000ff,#5555ff);
                 color: #eeeeee;
             }
+            #inputt{
+                margin-left:5%;
+                width:90%;
+                border-radius: 8px;
+                background:#0000DD;
+                color:white;
+                font-size:3.6vw;
+                text-align: center;
+                border:none;
+                
+            }
+            #inputt:focus{
+                outline:none;
+            }
+            #inputt::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 0.5; /* Firefox */
+}
     </style>
    <!--<link rel="stylesheet" type="text/css" href="decoration.css">--> 
 </head>
@@ -194,7 +209,7 @@
         <div id="head">
             <div id="heading">
                 <div style="height:17px"></div>
-                <font style="padding-left:30px; font-weight:bold; font-size:7vw">This is a shortcut </font>
+                <input id="inputt" type="text" ng-model="test" placeholder="write your shortcut here.">
                 <div style="height:17px"></div>
             </div>
             <div class="pop"></div>
@@ -209,6 +224,7 @@
                             </ul>
                         </div>
                     </li>
+					
                     <li id="head2">
                         <div id="sh2">
                             <font size="4"><b>Theme</b></font>
@@ -223,9 +239,10 @@
         </div>
             <div class="pop"></div>
         </div>
+<p></p>
 
         <div class="list" style="">
-            <div ng-repeat="x in whole|orderBy:'Name'">
+            <div ng-repeat="x in whole| filter:'Do you want to visit '+test">
                 <a href="{{x.URL}}">
                     <center><h1>{{x.Name}}</h1></center>
                     <img src="{{x.logo}}" />
