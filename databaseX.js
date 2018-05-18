@@ -24,20 +24,20 @@ app.controller("myCtrl", function ($scope) {
             Name: "Do you want to visit Facebook?",
             URL: "https://www.facebook.com",
             logo: "https://cdn.worldvectorlogo.com/logos/facebook-1.svg",
-            content: ""
+            content: "facebook by facebook social media"
         },
         {
             Name: "Do you want to visit Instagram?",
             URL: "https://www.instagram.com/?hl=en",
             logo: "https://i0.wp.com/mobileocta.com/wp-content/uploads/2018/01/logo-instragram.jpg?resize=700%2C352",
-            content: ""
+            content: "instagram by facebook social media"
         },
         
         {
             Name: "Do you want to visit Twitter?",
             URL: "https://twitter.com/",
             logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGfTFmvCnFxeXtEZ8Jpdg0YSvQ2BVTtuQByva4m6O52C-VjbsNCA",
-            content: ""
+            content: "tweater by twitter social media"
         },
         {
             Name: "Do you want to visit Gmail?",
