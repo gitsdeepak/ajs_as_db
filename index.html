@@ -5,208 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        var sld = 0;
-        
-        $(document).ready(function () {
-            var ex = 0;
-            function pop(x) {
-                $(".pop").css("height", x+"px");
-            }
-            $("#head1").click(function () {
-                ex = 1;
-                $("#hide1").slideDown();
-                setTimeout(function () { pop("153") }, 250);
-            });
-            $("#head2").click(function () {
-                ex = 2;
-                $("#hide2").slideDown();
-                setTimeout(function () { pop("153") }, 250);
-            });
-            $("#head2").mouseover(function () {
-
-                if (ex == 0) {
-                }else if(ex==2){}
-                else {
-                    pop("75");
-                    $("#hide" + ex).slideUp();
-                    ex = 0;
-                }
-
-            });
-            $("#head1").mouseover(function () {
-
-                if (ex == 0) {
-                } else if (ex == 1) { }
-                else {
-                    pop("75");
-                    $("#hide" + ex).slideUp();
-                    ex = 0;
-                }
-
-            });
-
-           $(".list").mouseover(function () {
-
-               if (ex == 0) {   
-               }
-               else {
-                   pop("75");
-                   $("#hide" + ex).slideUp();
-                   ex = 0;
-                   
-               }
-
-            });
-           $("#heading").mouseover(function () {
-
-               if (ex == 0) {
-               }
-               else {
-                   pop("75");
-                   $("#hide" + ex).slideUp();
-                   ex = 0;
-               }
-
-           });
-           $(".pop").mouseover(function () {
-
-               if (ex == 0) {
-               }
-               else {
-                   pop("75");
-                   $("#hide" + ex).slideUp();
-                   ex = 0;
-               }
-
-           });
-           
-        });
-    </script>
-    <style>
-        #main{
-           padding-left:0px;
-            list-style-type:none;
-            width:235px;
-            overflow:hidden;
-        }
-       #head1,#hide1:hover{
-           display:block
-       }
-        
-       #par{}
-            #main>li {
-                float:left;
-                display: block;
-                color: white;
-                width:95.5px;
-                text-align: center;
-                padding: 11px;
-                text-decoration: none;
-            }
-      
-            #main > li:hover {
-                background: white;
-                border: blue 2px solid;
-                color: blue;
-                padding: 8px;
-                border-radius: 15px;
-            }
-        
-
-           #hide1:hover{
-               display:block;
-           }
-           
-            
-            [id^="hide"] {     
-                background: white;
-                border-radius: 15px;
-                color: blue;
-                list-style-type: none;
-                display: none;
-                width: 92px;
-                font-weight: bold;
-                padding-left: 0px;
-                padding-top: 10px;
-                padding-bottom: 10px;
-            }
-            
-                [id^="hide"] li {
-                    padding: 5px;
-                    border-bottom: solid #808080 1px; border-radius:12px;
-                }
-                [id^="hide"] li:hover {
-                    background:blue;
-                    color:white;
-                    
-                }
-
-            .list {
-                width: 100%;
-                float: left;
-                list-style-type: none;
-                font-weight: bold;
-            }
-
-                .list a {
-                    color: blue;
-                    text-decoration: none;
-                }
-
-                    .list a:visited {
-                        color: blue;
-                    }
-
-                .list div {
-                    width: 100%;
-                    float: left;
-                    border-bottom: solid 1px #777777;
-                }
-
-                .list img {
-                    float: left;
-                    width: 30%;
-                }
-
-            @media (max-width:500px) {
-                .list img {
-                    float: left;
-                    width: 140px;
-                }
-            }
-            #par{float:left;}
-            .pop{width:5%;float:left;height:75px;}
-            #head { 
-                overflow:hidden;
-                background: linear-gradient(#0000ff,#5555ff);
-                color: #eeeeee;
-            }
-            #inputt{
-                margin-left:5%;
-                width:90%;
-                border-radius: 8px;
-                background:#0000DD;
-                color:white;
-                font-size:2.7vw;
-                text-align: center;
-                border:none;
-                padding-bottom:5px; 
-                padding-top:5px; 
-            }
-            #inputt:focus{
-                outline:none;
-            }
-            #inputt::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: white;
-    opacity: 0.5; /* Firefox */
-}
-	    @media (max-width:600px){
-    #inputt{
-    font-size:14pt;
-}}
-    </style>
-   <!--<link rel="stylesheet" type="text/css" href="decoration.css">--> 
+    <script src="function.js"></script>
+     
+  <link rel="stylesheet" type="text/css" href="dec.css">
 </head>
 <body>
 
@@ -214,7 +15,7 @@
         <div id="head">
             <div id="heading">
                 <div style="height:17px"></div>
-                <input id="inputt" type="text" ng-model="test" placeholder="search shortcut here.">
+                <input id="inputt" type="text" ng-model="test" placeholder="write your shortcut here.">
                 <div style="height:17px"></div>
             </div>
             <div class="pop"></div>
@@ -247,7 +48,7 @@
 <p></p>
 
         <div class="list" style="">
-            <div ng-repeat="x in whole| filter:'Do you want to visit '+test">
+            <div ng-repeat="x in whole| filter:{content:test}">
                 <a href="{{x.URL}}">
                     <center><h1>{{x.Name}}</h1></center>
                     <img src="{{x.logo}}" />
